@@ -1,4 +1,4 @@
-# 🎓 STEM Center AI Chatbot
+# STEM Center AI Chatbot
 
 > An intelligent, modular chatbot system for STEM center teachers to manage inventory, lesson plans, and procurement through natural language conversations.
 
@@ -9,7 +9,7 @@
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # 1. Navigate to backend
@@ -33,18 +33,18 @@ python app.py
 
 ---
 
-## 🎯 What This Does
+## What This Does
 
 Teachers in STEM centers often text in group chats:
 > "We're short on pencils for tomorrow. Can someone order more?"
 
 **This chatbot joins your group chat to:**
-- ✅ Instantly check inventory levels
-- ✅ Alert on low stock with urgency detection  
-- ✅ Suggest suppliers with direct ordering links
-- ✅ Handle approvals (future)
-- ✅ Find lesson plans (future)
-- ✅ All through natural conversation
+- Instantly check inventory levels
+- Alert on low stock with urgency detection  
+- Suggest suppliers with direct ordering links
+- Handle approvals (future)
+- Find lesson plans (future)
+- All through natural conversation
 
 ### Example Interaction
 
@@ -52,23 +52,23 @@ Teachers in STEM centers often text in group chats:
 
 **Bot**: 
 ```
-🤖 [InventoryAgent]
+[InventoryAgent]
 
-📦 Arduino Uno Kits - Current stock: 15 kits
-✅ Stock is above minimum threshold (10 kits).
+Arduino Uno Kits - Current stock: 15 kits
+Stock is above minimum threshold (10 kits).
 
 Available Suppliers:
 • TechEd Supplies - $35.99/kit - [Order Now](link)
 • Amazon Business - $32.99/kit - [Order Now](link)
 
-💡 Tip: You have enough for tomorrow's class!
+Tip: You have enough for tomorrow's class!
 ```
 
 ---
 
-## ✨ Features
+## Features
 
-### ✅ Phase 1: Inventory Management (IMPLEMENTED)
+### Phase 1: Inventory Management (IMPLEMENTED)
 
 - **Stock Queries**: "How many microscopes do we have?"
 - **Low Stock Alerts**: "Running short on beakers"
@@ -77,14 +77,14 @@ Available Suppliers:
 - **Transaction History**: Full audit trail
 - **Multi-category**: Stationery, Lab Equipment, Electronics, Tools
 
-### 🔮 Phase 2: Lesson Plans (PLANNED)
+### Phase 2: Lesson Plans (PLANNED)
 
 - RAG-based search over lesson plan library
 - "Find photosynthesis lessons for grade 7"
 - Curriculum alignment
 - Teacher recommendations
 
-### 🔮 Phase 3: Procurement & Approvals (PLANNED)
+### Phase 3: Procurement & Approvals (PLANNED)
 
 - Purchase order generation
 - Approval workflows
@@ -93,7 +93,7 @@ Available Suppliers:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 User Message → LLM Core Router → Specialized Agents → Actions → Response
@@ -115,14 +115,14 @@ See [Architecture Diagrams](ARCHITECTURE_DIAGRAMS.md) for details.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 final/
 ├── groupchat_app_src/
 │   ├── backend/
-│   │   ├── agents/              # ✅ Modular agent system
-│   │   ├── ml_training/         # ✅ LLM fine-tuning pipeline
+│   │   ├── agents/              # Modular agent system
+│   │   ├── ml_training/         # LLM fine-tuning pipeline
 │   │   ├── app.py               # Main application
 │   │   ├── db.py                # Database models
 │   │   ├── llm_core.py          # Agent router
@@ -137,19 +137,19 @@ final/
 
 ---
 
-## 📚 Documentation
+## Documentation
 
-- 📖 [**Setup Guide**](groupchat_app_src/README_SETUP.md) - Complete installation & deployment
-- 📋 [**Project Documentation**](groupchat_app_src/PROJECT_DOCUMENTATION.md) - Full system docs
-- 🎓 [**Training Guide**](groupchat_app_src/backend/ml_training/README.md) - Fine-tune your own LLM
-- 🚀 [**Quick Reference**](groupchat_app_src/QUICK_REFERENCE.md) - Common commands
-- 🧪 [**Testing Guide**](TESTING_GUIDE.md) - Test procedures
-- 📊 [**Architecture Diagrams**](ARCHITECTURE_DIAGRAMS.md) - Visual system overview
-- 📝 [**Implementation Summary**](IMPLEMENTATION_SUMMARY.md) - What we built
+- [**Setup Guide**](groupchat_app_src/README_SETUP.md) - Complete installation & deployment
+- [**Project Documentation**](groupchat_app_src/PROJECT_DOCUMENTATION.md) - Full system docs
+- [**Training Guide**](groupchat_app_src/backend/ml_training/README.md) - Fine-tune your own LLM
+- [**Quick Reference**](groupchat_app_src/QUICK_REFERENCE.md) - Common commands
+- [**Testing Guide**](TESTING_GUIDE.md) - Test procedures
+- [**Architecture Diagrams**](ARCHITECTURE_DIAGRAMS.md) - Visual system overview
+- [**Implementation Summary**](IMPLEMENTATION_SUMMARY.md) - What we built
 
 ---
 
-## 🎓 Fine-Tuning Your Own LLM
+## Fine-Tuning Your Own LLM
 
 We provide a **complete training pipeline** to specialize Llama-3.1-8B for your domain:
 
@@ -175,7 +175,7 @@ See [Training Guide](groupchat_app_src/backend/ml_training/README.md) for detail
 
 ---
 
-## 🧩 Modular Design
+## Modular Design
 
 Adding new features is straightforward:
 
@@ -197,7 +197,7 @@ That's it! The router automatically delegates queries to your new agent.
 
 ---
 
-## 🛠️ Development
+## Development
 
 ### Prerequisites
 - Python 3.10+
@@ -237,7 +237,7 @@ See [Testing Guide](TESTING_GUIDE.md) for comprehensive tests.
 
 ---
 
-## 📊 Database Schema
+## Database Schema
 
 ### Inventory System
 - **inventory_items**: Stock levels, categories, thresholds
@@ -252,9 +252,9 @@ Full schema in `groupchat_app_src/sql/schema.sql`
 
 ---
 
-## 🎯 Roadmap
+## Roadmap
 
-### ✅ Phase 1: Inventory (Current)
+### Phase 1: Inventory (Current)
 - [x] Agent architecture
 - [x] Database models
 - [x] LLM fine-tuning pipeline
@@ -262,19 +262,19 @@ Full schema in `groupchat_app_src/sql/schema.sql`
 - [x] Web interface
 - [ ] Mobile app testing
 
-### 📅 Phase 2: Lesson Plans (Next)
+### Phase 2: Lesson Plans (Next)
 - [ ] RAG system with vector DB
 - [ ] Lesson plan indexing
 - [ ] Search & recommendations
 - [ ] Curriculum alignment
 
-### 📅 Phase 3: Procurement
+### Phase 3: Procurement
 - [ ] Approval workflows
 - [ ] Purchase orders
 - [ ] Budget tracking
 - [ ] Email notifications
 
-### 📅 Phase 4: Advanced
+### Phase 4: Advanced
 - [ ] Multi-tenant support
 - [ ] Analytics dashboard
 - [ ] Voice interface
@@ -282,7 +282,7 @@ Full schema in `groupchat_app_src/sql/schema.sql`
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -294,7 +294,7 @@ Full schema in `groupchat_app_src/sql/schema.sql`
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Can't connect to database
 ```bash
@@ -321,13 +321,13 @@ See [Setup Guide](groupchat_app_src/README_SETUP.md#troubleshooting) for more.
 
 ---
 
-## 📄 License
+## License
 
 [Your License Here]
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Meta AI for Llama 3.1
 - Unsloth for efficient training
@@ -336,15 +336,15 @@ See [Setup Guide](groupchat_app_src/README_SETUP.md#troubleshooting) for more.
 
 ---
 
-## 📞 Support
+## Support
 
-- 📖 Check documentation first
-- 🐛 [Create an issue](your-repo/issues)
-- 💬 [Discussions](your-repo/discussions)
+- Check documentation first
+- [Create an issue](your-repo/issues)
+- [Discussions](your-repo/discussions)
 
 ---
 
-## 🌟 Star History
+## Star History
 
 If this helps your STEM center, please star the repo!
 
@@ -352,7 +352,7 @@ If this helps your STEM center, please star the repo!
 
 <div align="center">
 
-**Built with ❤️ for STEM educators**
+**Built for STEM educators**
 
 [Setup Guide](groupchat_app_src/README_SETUP.md) • [Documentation](groupchat_app_src/PROJECT_DOCUMENTATION.md) • [Training Guide](groupchat_app_src/backend/ml_training/README.md)
 

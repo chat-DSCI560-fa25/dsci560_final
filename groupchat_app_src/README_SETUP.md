@@ -1,6 +1,6 @@
 # STEM Center AI Chatbot - Setup & Deployment Guide
 
-## 🎯 Project Overview
+## Project Overview
 
 This is a modular AI chatbot system for STEM centers that helps teachers manage:
 - **Inventory Management** (Phase 1 - Current Implementation)
@@ -17,14 +17,14 @@ User Message → LLM Core Router → Specialized Agents → Database/Actions →
               (Inventory Domain Expert)
 ```
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **Python**: 3.10 or higher
 - **MySQL**: 8.0 or higher (or MariaDB)
 - **Node.js**: 16+ (for frontend, optional)
 - **GPU**: Recommended for LLM training (NVIDIA with CUDA)
 
-## 🚀 Quick Start (Development)
+## Quick Start (Development)
 
 ### 1. Clone and Setup
 
@@ -155,7 +155,7 @@ Or use the provided script:
 python scripts/seed_inventory.py  # Create this script
 ```
 
-## 🎓 Training Your Own LLM (Phase 1)
+## Training Your Own LLM (Phase 1)
 
 ### 1. Generate Training Data
 
@@ -192,7 +192,7 @@ llama-server --model inventory_llm_model_gguf/model.gguf --port 8001
 LLM_MODEL=./ml_training/inventory_llm_model
 ```
 
-## 🧪 Testing the System
+## Testing the System
 
 ### Test Inventory Agent
 
@@ -221,7 +221,7 @@ curl http://localhost:8000/api/inventory/low-stock
 curl http://localhost:8000/api/agents
 ```
 
-## 📦 Production Deployment
+## Production Deployment
 
 ### Using Docker (Recommended)
 
@@ -351,7 +351,7 @@ server {
 }
 ```
 
-## 🔐 Security Considerations
+## Security Considerations
 
 1. **Change Secret Keys**: Generate strong `SECRET_KEY` in production
 2. **Database Security**: Use strong passwords, restrict network access
@@ -360,7 +360,7 @@ server {
 5. **Input Validation**: Already implemented via Pydantic
 6. **SQL Injection**: Protected via SQLAlchemy ORM
 
-## 📊 Monitoring
+## Monitoring
 
 ### Application Logs
 
@@ -395,7 +395,7 @@ Monitor:
 - Token usage
 - Error rates
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### "Cannot connect to database"
 - Check MySQL is running: `sudo systemctl status mysql`
@@ -417,7 +417,7 @@ Monitor:
 - Use smaller model (8B instead of 70B)
 - Enable 4-bit quantization
 
-## 🔄 Adding New Features
+## Adding New Features
 
 ### Adding a New Agent
 
@@ -446,13 +446,13 @@ class ProcurementAgent(BaseAgent):
         pass
 ```
 
-## 📱 Android App Integration
+## Android App Integration
 
 The `twa_android_src/` folder contains a Trusted Web Activity wrapper. Update the URL in the app to point to your deployed backend.
 
-## 🎯 Roadmap
+## Roadmap
 
-### Phase 1: ✅ Inventory Management (Current)
+### Phase 1: Inventory Management (Current)
 - [x] Agent architecture
 - [x] Inventory database models
 - [x] LLM fine-tuning pipeline
@@ -477,14 +477,14 @@ The `twa_android_src/` folder contains a Trusted Web Activity wrapper. Update th
 - [ ] Voice interface
 - [ ] Mobile notifications
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [SQLAlchemy Async](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)
 - [Llama 3.1 Guide](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)
 - [Fine-tuning Guide](ml_training/README.md)
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -492,11 +492,11 @@ The `twa_android_src/` folder contains a Trusted Web Activity wrapper. Update th
 4. Test thoroughly
 5. Submit pull request
 
-## 📄 License
+## License
 
 [Your License Here]
 
-## 💬 Support
+## Support
 
 For issues or questions:
 - Check troubleshooting section
@@ -505,4 +505,4 @@ For issues or questions:
 
 ---
 
-**Built with ❤️ for STEM educators**
+**Built for STEM educators**

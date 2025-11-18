@@ -4,7 +4,7 @@
 
 This guide covers the complete process of fine-tuning Meta-Llama-3.1-8B-Instruct for STEM center inventory management.
 
-## 🎯 Goal
+## Goal
 
 Train a specialized LLM that understands:
 - Inventory queries (stock checks, quantity lookups)
@@ -12,7 +12,7 @@ Train a specialized LLM that understands:
 - Supplier management and ordering
 - STEM-specific terminology (lab equipment, electronics, teaching materials)
 
-## 📋 Prerequisites
+## Prerequisites
 
 ### Hardware Requirements
 - **Recommended**: NVIDIA GPU with 16GB+ VRAM (RTX 4090, A100, etc.)
@@ -25,7 +25,7 @@ Train a specialized LLM that understands:
 - CUDA 11.8+ or 12.1+
 - Linux or WSL2 (recommended), or macOS with M1/M2/M3
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Step 1: Install Training Dependencies
 
@@ -90,7 +90,7 @@ outputs = model.generate(inputs, max_new_tokens=256)
 print(tokenizer.decode(outputs[0]))
 ```
 
-## 🔧 Configuration Options
+## Configuration Options
 
 ### Model Selection
 
@@ -122,7 +122,7 @@ learning_rate = 2e-4  # 1e-4 to 5e-4
 per_device_train_batch_size = 2  # Adjust based on VRAM
 ```
 
-## 📊 Understanding the Training Data
+## Understanding the Training Data
 
 Our dataset focuses on real-world STEM center scenarios:
 
@@ -167,7 +167,7 @@ Training data uses Llama-3.1's chat template:
 }
 ```
 
-## 🎓 Advanced Topics
+## Advanced Topics
 
 ### Adding Custom Training Data
 
@@ -196,7 +196,7 @@ To add procurement or lesson plan capabilities:
 # ✓ Formats responses clearly
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Out of Memory Errors
 
@@ -219,7 +219,7 @@ To add procurement or lesson plan capabilities:
 3. Verify training data quality
 4. Check validation loss - should decrease over time
 
-## 🚢 Deployment
+## Deployment
 
 ### Option 1: llama.cpp (Recommended for Production)
 
@@ -243,7 +243,7 @@ model = AutoModelForCausalLM.from_pretrained("./inventory_llm_model")
 tokenizer = AutoTokenizer.from_pretrained("./inventory_llm_model")
 ```
 
-## 📈 Performance Metrics
+## Performance Metrics
 
 After fine-tuning, expect:
 - **Inventory Recognition**: 95%+ accuracy on STEM items
@@ -251,21 +251,21 @@ After fine-tuning, expect:
 - **Response Quality**: Contextual, action-oriented
 - **Inference Speed**: ~20-50 tokens/sec (depends on hardware)
 
-## 🔄 Continuous Improvement
+## Continuous Improvement
 
 1. **Collect Real Usage Data**: Save actual chat messages
 2. **Human Feedback**: Mark good/bad responses
 3. **Iterative Training**: Add feedback data to training set
 4. **A/B Testing**: Compare model versions
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Unsloth Documentation](https://github.com/unslothai/unsloth)
 - [Llama 3.1 Model Card](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)
 - [LoRA Paper](https://arxiv.org/abs/2106.09685)
 - [Instruction Fine-tuning Guide](https://huggingface.co/docs/trl/sft_trainer)
 
-## 💡 Tips
+## Tips
 
 1. **Start Small**: Fine-tune on 8B model first, scale to 70B if needed
 2. **Monitor GPU Usage**: Use `nvidia-smi` to watch memory
@@ -273,7 +273,7 @@ After fine-tuning, expect:
 4. **Version Control**: Track model versions and training configs
 5. **Document Changes**: Keep notes on what works/doesn't work
 
-## 🤝 Contributing Training Data
+## Contributing Training Data
 
 To contribute more training examples:
 1. Follow the format in `generate_training_data.py`
