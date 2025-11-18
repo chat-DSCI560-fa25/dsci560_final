@@ -179,8 +179,15 @@ async def post_message(payload: MessagePayload, username: str = Depends(get_curr
     await session.commit()
     await session.refresh(m)
     await broadcast_message(session, m)
-    # fire-and-forget LLM answer with agent routing (uses its own session)
-    asyncio.create_task(maybe_answer_with_llm(payload.content, username))
+    
+    # Only trigger agent if message starts with '#' (like GitHub Copilot)
+    if payload.content.strip().startswith('#'):
+        # Remove the '#' trigger and process the actual message
+        actual_content = payload.content.strip()[1:].strip()
+        if actual_content:  # Only process if there's content after '#'
+            # fire-and-forget LLM answer with agent routing (uses its own session)
+            asyncio.create_task(maybe_answer_with_llm(actual_content, username))
+    
     return {"ok": True, "id": m.id}
 
 @app.put("/api/messages/{message_id}")
@@ -249,8 +256,11 @@ async def edit_message(message_id: int, payload: MessagePayload, username: str =
             "message_id": bot_msg_deleted_id
         })
     
-    # Regenerate LLM answer for the edited message
-    asyncio.create_task(maybe_answer_with_llm(payload.content, username))
+    # Only regenerate LLM answer if edited message starts with '#'
+    if payload.content.strip().startswith('#'):
+        actual_content = payload.content.strip()[1:].strip()
+        if actual_content:
+            asyncio.create_task(maybe_answer_with_llm(actual_content, username))
     
     return {"ok": True, "id": msg.id}
 
