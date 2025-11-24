@@ -19,7 +19,7 @@ from llm_core import llm_router
 load_dotenv()
 
 APP_HOST = os.getenv("APP_HOST", "0.0.0.0")
-# Use PORT environment variable (set by Render/Railway) or default to 8000
+# Use PORT environment variable or default to 8000
 APP_PORT = int(os.getenv("PORT", os.getenv("APP_PORT", "8000")))
 
 app = FastAPI(title="Group Chat with LLM Bot")

@@ -8,10 +8,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Support both MySQL and PostgreSQL for deployment flexibility
+# Support both MySQL and PostgreSQL
 DATABASE_URL = os.getenv("DATABASE_URL", "mysql+asyncmy://chatuser:chatpass@localhost:3306/groupchat")
 
-# Auto-convert PostgreSQL URL format if needed (for Render.com, Railway, etc.)
+# Auto-convert PostgreSQL URL format if needed
 if DATABASE_URL.startswith("postgresql://"):
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
 
