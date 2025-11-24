@@ -1,0 +1,15 @@
+# Local git optimizations for this repository
+# Run: git config --local include.path ../.gitconfig_local
+
+[core]
+    precomposeunicode = true
+    quotepath = false
+    fsmonitor = true
+
+[status]
+    showUntrackedFiles = no
+    submoduleSummary = false
+
+[advice]
+    statusHints = false
+
