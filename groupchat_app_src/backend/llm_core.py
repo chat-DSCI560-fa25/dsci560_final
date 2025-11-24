@@ -9,7 +9,7 @@ from typing import Dict, List, Any, Optional
 from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from agents import BaseAgent, InventoryAgent
+from agents import BaseAgent, InventoryAgent, LessonPlanAgent
 
 load_dotenv()
 
@@ -35,7 +35,8 @@ class LLMRouter:
         """
         # Register inventory agent
         self.agents.append(InventoryAgent())
-        
+        # Register lesson plan agent (Phase 2)
+        self.agents.append(LessonPlanAgent())
         # Future agents can be added here:
         # self.agents.append(ProcurementAgent())
         # self.agents.append(ApprovalAgent())
