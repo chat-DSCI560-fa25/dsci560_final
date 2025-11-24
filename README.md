@@ -1,6 +1,6 @@
-# STEM Center AI Chatbot
+# Flow AI
 
-> An intelligent, modular chatbot system for STEM center teachers to manage inventory, lesson plans, and procurement through natural language conversations.
+> Flow AI is an intelligent, modular chatbot system for STEM center teachers to manage inventory, lesson plans, and procurement through natural language conversations.
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green.svg)](https://fastapi.tiangolo.com/)

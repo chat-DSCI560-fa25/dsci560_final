@@ -1,6 +1,6 @@
-# Group Chat Web App + LLM Bot
+# Flow AI Web App
 
-FastAPI + MySQL + vanilla HTML/JS group chat with LLM bot (OpenAI-compatible server such as self-hosted Llama 3 via llama.cpp).
+Flow AI is a FastAPI + MySQL + vanilla HTML/JS experience with an LLM bot (OpenAI-compatible server such as self-hosted Llama 3 via llama.cpp).
 
 ## Quick Start (Dev)
 

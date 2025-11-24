@@ -45,7 +45,7 @@ An intelligent chatbot that:
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                        User Input                           │
-│             (Group Chat / Web Interface)                    │
+│             (Flow AI Web Interface)                         │
 └────────────────────────┬────────────────────────────────────┘
                          │
                          ▼
