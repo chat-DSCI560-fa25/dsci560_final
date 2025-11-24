@@ -22,7 +22,7 @@ APP_HOST = os.getenv("APP_HOST", "0.0.0.0")
 # Use PORT environment variable or default to 8000
 APP_PORT = int(os.getenv("PORT", os.getenv("APP_PORT", "8000")))
 
-app = FastAPI(title="Group Chat with LLM Bot")
+app = FastAPI(title="Flow AI")
 
 # Allow same-origin and dev origins by default
 app.add_middleware(
