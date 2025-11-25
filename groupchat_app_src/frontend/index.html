@@ -10,7 +10,7 @@
   <div class="container">
     <div class="auth" id="auth">
       <h1>Flow AI</h1>
-      <p>Create an account or log in to join the chat.</p>
+      <p class="subhead">Plan lessons, manage inventory, and chat with your STEM assistant.</p>
       <div class="row">
         <input id="username" placeholder="Username">
         <input id="password" placeholder="Password" type="password">
@@ -30,11 +30,20 @@
           <button id="logoutBtn">Log Out</button>
         </div>
       </div>
+      <div class="info-banner">
+        <p>Tip: start messages with <code>#</code> to tap lesson-plan or inventory agents.</p>
+        <div class="chip-row">
+          <span class="chip">#Need Grade 5 lesson on density</span>
+          <span class="chip">#Inventory check safety goggles</span>
+          <span class="chip">#Suggest an aerodynamics challenge</span>
+        </div>
+      </div>
       <div id="messages" class="messages"></div>
       <div class="composer">
         <input id="chatInput" placeholder="Type a message…">
         <button id="sendBtn">Send</button>
       </div>
+      <div class="chat-hint">LLM responses stay on-device. Prefix prompts with # for structured agent help.</div>
     </div>
   </div>
   <script src="app.js"></script>

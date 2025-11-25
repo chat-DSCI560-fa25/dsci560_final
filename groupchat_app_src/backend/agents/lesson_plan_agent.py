@@ -36,6 +36,25 @@ class LessonPlanAgent(BaseAgent):
         collection = chroma_client.get_or_create_collection(name="lesson_plans")
         embedder = SentenceTransformer('all-MiniLM-L6-v2')
         query_embedding = embedder.encode(user_message)
+
+        # Determine how many results to return based on user message (default 5)
+        desired_results = 5
+        lower_msg = user_message.lower()
+        candidate_counts = []
+        for match in re.finditer(r'\b(\d+)\b', lower_msg):
+            prev_words = re.findall(r'\b\w+\b', lower_msg[:match.start()])
+            prev_word = prev_words[-1] if prev_words else ""
+            if prev_word in {"grade", "grades"}:
+                continue
+            candidate_counts.append(int(match.group(1)))
+        if candidate_counts:
+            requested = candidate_counts[0]
+            if requested < 1:
+                desired_results = 1
+            elif requested > 10:
+                desired_results = 10
+            else:
+                desired_results = requested
         # Extract grade/subject/topic from query
         grade = None
         subject = None
@@ -49,7 +68,7 @@ class LessonPlanAgent(BaseAgent):
         # Query vector DB
         results = collection.query(
             query_embeddings=[query_embedding],
-            n_results=5,
+            n_results=desired_results,
             include=['documents', 'metadatas', 'distances']
         )
         # Chroma returns lists per query; we only issue one query, so take index 0

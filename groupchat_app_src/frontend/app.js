@@ -89,6 +89,12 @@ function addMessage(m) {
   console.log("Adding NEW message ID:", m.id, "from:", m.username, "Content:", m.content.substring(0, 50));
   const el = document.createElement("div");
   el.className = "message" + (m.is_bot ? " bot" : "");
+  const currentUser = localStorage.getItem("currentUser") || "";
+  if (!m.is_bot && currentUser && m.username === currentUser) {
+    el.classList.add("mine");
+  } else {
+    el.classList.add("other");
+  }
   el.dataset.messageId = m.id;
   
   const meta = document.createElement("div");

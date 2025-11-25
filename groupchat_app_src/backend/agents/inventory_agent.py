@@ -425,7 +425,10 @@ class InventoryAgent(BaseAgent):
             if match:
                 item_name = match.group(1).strip()
                 # Filter out stop words
-                stop_words = {"the", "a", "an", "new", "to", "in", "inventory", "stock", "of"}
+                stop_words = {
+                    "the", "a", "an", "new", "to", "in", "inventory", "stock", "of",
+                    "box", "boxes", "pack", "packs", "bundle", "bundles", "case", "cases"
+                }
                 words = [w for w in item_name.split() if w not in stop_words and len(w) > 1]
                 if words:
                     item_name = " ".join(words)
@@ -598,7 +601,12 @@ class InventoryAgent(BaseAgent):
             if match:
                 item = match.group(1).strip()
                 # Filter out common words, action words, and query words
-                stop_words = {"the", "a", "an", "some", "more", "any", "all", "everything", "complete", "entire", "full", "me", "restocking", "restock", "need", "items", "things", "stuff", "current", "show", "check", "get", "tell", "what's", "display", "list"}
+                stop_words = {
+                    "the", "a", "an", "some", "more", "any", "all", "everything", "complete", "entire", "full",
+                    "me", "restocking", "restock", "need", "items", "things", "stuff", "current", "show", "check",
+                    "get", "tell", "what's", "display", "list", "do", "we", "have",
+                    "box", "boxes", "pack", "packs", "bundle", "bundles", "case", "cases"
+                }
                 words = [w for w in item.split() if w not in stop_words and len(w) > 1]
                 if words:
                     return " ".join(words)
