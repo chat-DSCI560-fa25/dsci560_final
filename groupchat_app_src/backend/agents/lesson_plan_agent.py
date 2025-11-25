@@ -52,9 +52,16 @@ class LessonPlanAgent(BaseAgent):
             n_results=5,
             include=['documents', 'metadatas', 'distances']
         )
-        docs = results.get('documents', [])
-        metadatas = results.get('metadatas', [])
-        distances = results.get('distances', [])
+        # Chroma returns lists per query; we only issue one query, so take index 0
+        docs = results.get('documents', [[]])
+        metadatas = results.get('metadatas', [[]])
+        distances = results.get('distances', [[]])
+        if docs:
+            docs = docs[0]
+        if metadatas:
+            metadatas = metadatas[0]
+        if distances:
+            distances = distances[0]
         # Always show top 5 results with their similarity scores
         response_lines = []
         def flatten_meta(meta):
@@ -131,10 +138,27 @@ class LessonPlanAgent(BaseAgent):
                 # Fall back to truncation if LLM fails
                 return truncate_text(doc_content, max_length=500)
         
-        for i, (doc_list, meta, dist) in enumerate(zip(docs, metadatas, distances)):
+        def normalize_paragraphs(text: str) -> str:
+            """Collapse excessive blank lines while keeping paragraphs readable."""
+            if not text:
+                return ""
+            lines = [line.strip() for line in text.splitlines()]
+            normalized = []
+            blank_streak = 0
+            for line in lines:
+                if line:
+                    normalized.append(line)
+                    blank_streak = 0
+                else:
+                    if blank_streak < 1:
+                        normalized.append("")
+                    blank_streak += 1
+            return "\n".join(normalized).strip()
+        
+        for i, (doc_content, meta, dist) in enumerate(zip(docs, metadatas, distances)):
             meta = flatten_meta(meta)
             score = flatten_score(dist)
-            doc_content = flatten_doc(doc_list)
+            doc_content = flatten_doc(doc_content)
             
             # Use full document content if available, otherwise fall back to snippet
             raw_text = doc_content if doc_content else (meta.get('snippet', '') if isinstance(meta, dict) else '')
@@ -145,21 +169,29 @@ class LessonPlanAgent(BaseAgent):
             else:
                 display_text = raw_text
             
+            display_text = normalize_paragraphs(display_text)
+            
             if isinstance(meta, dict):
                 filename = meta.get('filename', 'Unknown')
-                # Format with explicit spacing - use multiple newlines and visual separators
-                # Format: Number, filename on one line, then summary on next lines with spacing
-                formatted_entry = f"\n[{i+1}] {filename}\n\n{display_text}\n"
+                formatted_entry = (
+                    f"### [{i+1}] {filename}\n\n"
+                    f"{display_text.strip()}\n\n"
+                    f"*Category*: {meta.get('subject', 'N/A')}  \n"
+                    f"*Grade*: {meta.get('grade', 'N/A')}  \n"
+                    f"*Topic*: {meta.get('topic', 'N/A')}\n"
+                )
                 response_lines.append(formatted_entry)
             else:
-                formatted_entry = f"\n[{i+1}] [Unrecognized format]\n\n{display_text}\n"
+                formatted_entry = (
+                    f"### [{i+1}] Lesson Plan\n\n"
+                    f"{display_text.strip()}\n"
+                )
                 response_lines.append(formatted_entry)
         
         if response_lines:
-            # Join with clear visual separators between entries
-            # Use multiple newlines and separator line for clear distinction
-            separator = "\n" + ("=" * 60) + "\n"
-            response = "Top lesson plans found:\n" + separator.join(response_lines)
+            separator = "\n---\n"
+            response_lines = [line.lstrip("# ").replace("*", "") for line in response_lines]
+            response = "Top lesson plans found:\n\n" + separator.join(response_lines)
         else:
             response = "No relevant lesson plans found."
         return {

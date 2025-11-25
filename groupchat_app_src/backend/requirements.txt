@@ -10,3 +10,7 @@ python-jose[cryptography]
 python-dotenv
 httpx
 jinja2
+chromadb
+sentence-transformers
+pdfminer.six
+python-docx

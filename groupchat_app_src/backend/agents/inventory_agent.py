@@ -43,10 +43,19 @@ class InventoryAgent(BaseAgent):
         # Strip any command prefixes like "#"
         message_lower = user_message.lower().strip().lstrip('#').strip()
         
+        # Quickly filter out education/lesson requests so we don't hijack them
+        lesson_terms = ["lesson", "curriculum", "plan", "worksheet", "activity", "grade"]
+        if any(term in message_lower for term in lesson_terms):
+            # Only continue if the message also contains strong inventory cues
+            strong_inventory_terms = ["inventory", "stock", "supplies", "materials", "order", "restock"]
+            if not any(term in message_lower for term in strong_inventory_terms):
+                return False, 0.0
+        
         # High confidence patterns - expanded to catch more variations
         high_confidence_patterns = [
             r"(check|what's|show|get|tell|display|list).*(stock|inventory|supplies|available|items)",
-            r"(low on|short on|need|out of|running low)",
+            r"(low on|short on|running low|out of).*(stock|inventory|supplies|materials|items)",
+            r"need (more|to restock|to reorder|to order)",
             r"how many .* (do we have|available|in stock)",
             r"(order|purchase|buy|get more|add|new).*(to|in).*(inventory|stock)",
             r"inventory (check|status|report|list)",
